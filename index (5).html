@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#145c3b">
+  <title>Kerala Lottery Results</title>
+  <style>
+    :root{--green:#145c3b;--green2:#1d7650;--gold:#d6ad4b;--ink:#183329;--muted:#66756e;--line:#e2e9e4;--bg:#f5f8f5}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+    header{background:var(--green);color:#fff;padding:25px 16px;text-align:center;border-bottom:4px solid var(--gold)}
+    header h1{font-size:clamp(23px,4vw,34px);margin:0 0 7px;letter-spacing:.5px}
+    header p{margin:0;color:#e4f1e8;font-size:14px}
+    main{max-width:900px;margin:26px auto;padding:0 15px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:18px;box-shadow:0 4px 16px rgba(22,65,43,.045)}
+    h2{font-size:20px;margin:0 0 15px;color:var(--green)}
+    .date{color:var(--muted);font-size:13px;text-align:center;margin-top:10px}
+    .upload-area{border:2px dashed #9ab9a5;background:#f8fbf8;border-radius:10px;padding:25px 15px;text-align:center}
+    .upload-area strong{display:block;margin-bottom:7px}
+    .upload-area p{font-size:13px;color:var(--muted);margin:0 0 15px}
+    input[type=file]{max-width:100%;margin:8px auto 14px;display:block}
+    button,.button{border:0;border-radius:7px;background:var(--green2);color:white;padding:11px 18px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
+    button:disabled{opacity:.55;cursor:not-allowed}
+    .status{font-size:13px;margin-top:12px;color:var(--muted);min-height:18px}
+    .status.error{color:#b42318}.status.ok{color:#187044}
+    .result{border:1px solid var(--line);border-radius:9px;padding:15px;margin:12px 0}
+    .result-top{display:flex;gap:12px;align-items:center}
+    .pdf-icon{font-size:28px}
+    .result-title{font-weight:700;overflow-wrap:anywhere}
+    .meta{font-size:12px;color:var(--muted);margin-top:5px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .secondary{background:#edf4ef;color:var(--green);border:1px solid #d6e5da}
+    .viewer{width:100%;height:650px;border:1px solid var(--line);border-radius:8px;background:#f4f4f4}
+    .empty{text-align:center;color:var(--muted);padding:24px 8px;font-size:14px}
+    footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 15px 30px}
+    .notice{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
+    @media(max-width:600px){.panel{padding:16px}.viewer{height:480px}.actions button,.actions a{flex:1;text-align:center}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>KERALA LOTTERY RESULTS</h1>
+  <p>Lottery Result Announcement &amp; PDF Upload</p>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Lottery Prize Details</h2>
+    <p style="margin:0 0 14px;color:#66756e;font-size:14px">Prize amounts displayed for visitor information.</p>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;text-align:left">
+        <thead>
+          <tr style="background:#edf4ef;color:#145c3b">
+            <th style="padding:12px;border:1px solid #dce7df">Prize</th>
+            <th style="padding:12px;border:1px solid #dce7df">Amount in words</th>
+            <th style="padding:12px;border:1px solid #dce7df">Prize amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff8e7;font-weight:700">
+            <td style="padding:13px;border:1px solid #e8dfc9">1st Prize</td>
+            <td style="padding:13px;border:1px solid #e8dfc9">1 Crore</td>
+            <td style="padding:13px;border:1px solid #e8dfc9">₹1,00,00,000</td>
+          </tr>
+          <tr>
+            <td style="padding:12px;border:1px solid #e2e9e4">2nd Prize</td>
+            <td style="padding:12px;border:1px solid #e2e9e4">50 Lakh</td>
+            <td style="padding:12px;border:1px solid #e2e9e4">₹50,00,000</td>
+          </tr>
+          <tr>
+            <td style="padding:12px;border:1px solid #e2e9e4">3rd Prize</td>
+            <td style="padding:12px;border:1px solid #e2e9e4">10 Lakh</td>
+            <td style="padding:12px;border:1px solid #e2e9e4">₹10,00,000</td>
+          </tr>
+          <tr>
+            <td style="padding:12px;border:1px solid #e2e9e4">4th Prize</td>
+            <td style="padding:12px;border:1px solid #e2e9e4">5 Lakh</td>
+            <td style="padding:12px;border:1px solid #e2e9e4">₹5,00,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Upload Lottery Result PDF</h2>
+    <div class="upload-area">
+      <strong>Select your Kerala Lottery result PDF</strong>
+      <p>PDF files only · Maximum size 10 MB</p>
+      <input id="pdfFile" type="file" accept="application/pdf,.pdf">
+      <button id="uploadBtn" type="button">Upload Result</button>
+      <div id="uploadStatus" class="status" role="status" aria-live="polite"></div>
+    </div>
+    <p class="notice">Uploaded files are intended to be published for everyone after the server confirms a successful upload. Do not upload private or personal documents.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Latest Uploaded Results</h2>
+    <div id="resultsList"><div class="empty">Loading published results…</div></div>
+  </section>
+
+  <section class="panel" id="viewerPanel" hidden>
+    <h2 id="viewerTitle">Lottery Result PDF</h2>
+    <iframe id="pdfViewer" class="viewer" title="Lottery result PDF viewer"></iframe>
+    <div class="actions">
+      <a id="downloadLink" class="button" href="#" target="_blank" rel="noopener">Download PDF</a>
+      <button class="secondary" type="button" onclick="window.print()">Print page</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>Kerala Lottery Results</strong><br>
+  Please verify winning numbers with official Kerala State Lotteries publications.<br>
+  This website is an independent result-sharing page and is not an official government website.
+</footer>
+
+<script>
+  const MAX_SIZE = 10 * 1024 * 1024;
+  const fileInput = document.getElementById('pdfFile');
+  const uploadBtn = document.getElementById('uploadBtn');
+  const statusBox = document.getElementById('uploadStatus');
+  const resultsList = document.getElementById('resultsList');
+
+  function setStatus(message, type='') {
+    statusBox.textContent = message;
+    statusBox.className = 'status ' + type;
+  }
+
+  function safeText(value) {
+    const span = document.createElement('span');
+    span.textContent = value == null ? '' : String(value);
+    return span.innerHTML;
+  }
+
+  function showViewer(url, title) {
+    document.getElementById('viewerPanel').hidden = false;
+    document.getElementById('viewerTitle').textContent = title || 'Lottery Result PDF';
+    document.getElementById('pdfViewer').src = url;
+    document.getElementById('downloadLink').href = url;
+    document.getElementById('viewerPanel').scrollIntoView({behavior:'smooth'});
+  }
+
+  function renderResults(items) {
+    if (!Array.isArray(items) || items.length === 0) {
+      resultsList.innerHTML = '<div class="empty">No results have been uploaded yet.</div>';
+      return;
+    }
+    resultsList.innerHTML = '';
+    items.forEach(item => {
+      if (!item || !item.url) return;
+      const card = document.createElement('article');
+      card.className = 'result';
+      const name = item.name || 'Lottery result.pdf';
+      const uploaded = item.uploadedAt ? new Date(item.uploadedAt).toLocaleString() : 'Upload date unavailable';
+      card.innerHTML = '<div class="result-top"><div class="pdf-icon">📄</div><div><div class="result-title">' +
+        safeText(name) + '</div><div class="meta">' + safeText(item.lotteryName || 'Kerala Lottery') +
+        ' · ' + safeText(item.drawDate || 'Draw date not provided') + '<br>Uploaded: ' + safeText(uploaded) +
+        '</div></div></div><div class="actions"><button type="button" class="viewBtn">View Result</button><a class="button secondary" target="_blank" rel="noopener">Download PDF</a></div>';
+      card.querySelector('.viewBtn').addEventListener('click', () => showViewer(item.url, name));
+      card.querySelector('a').href = item.url;
+      resultsList.appendChild(card);
+    });
+    if (!resultsList.children.length) resultsList.innerHTML = '<div class="empty">No published results available.</div>';
+  }
+
+  async function loadResults() {
+    try {
+      // This endpoint must be implemented by the website backend.
+      const response = await fetch('/api/results', {cache:'no-store'});
+      if (!response.ok) throw new Error('Results service is not configured.');
+      const data = await response.json();
+      renderResults(data.results || data);
+    } catch (error) {
+      resultsList.innerHTML = '<div class="empty">PDF publishing is not connected yet. Configure the /api/results backend endpoint to show uploaded files to all visitors.</div>';
+    }
+  }
+
+  uploadBtn.addEventListener('click', async () => {
+    const file = fileInput.files[0];
+    if (!file) return setStatus('Please choose a PDF file.', 'error');
+    if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) return setStatus('Only PDF files are allowed.', 'error');
+    if (file.size > MAX_SIZE) return setStatus('File is larger than 10 MB.', 'error');
+
+    uploadBtn.disabled = true;
+    setStatus('Uploading PDF…');
+    try {
+      // The backend must securely upload to Vercel Blob and save its metadata.
+      const form = new FormData();
+      form.append('file', file);
+      const response = await fetch('/api/upload', {method:'POST', body:form});
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'Upload failed. Please try again.');
+      setStatus('Upload successful. Your PDF is now published.', 'ok');
+      fileInput.value = '';
+      await loadResults();
+      if (data.url) showViewer(data.url, data.name || file.name);
+    } catch (error) {
+      setStatus(error.message || 'Upload service is not configured yet.', 'error');
+    } finally {
+      uploadBtn.disabled = false;
+    }
+  });
+
+  loadResults();
+  // Refresh the published results list every 30 seconds.
+  setInterval(loadResults, 30000);
+</script>
+</body>
+</html>
